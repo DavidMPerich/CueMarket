@@ -4,6 +4,7 @@ using CueMarket.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CueMarket.API.Migrations
 {
     [DbContext(typeof(CueMarketDbContext))]
-    partial class CueMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250623185130_CompleteTipModel")]
+    partial class CompleteTipModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,33 +43,6 @@ namespace CueMarket.API.Migrations
                     b.HasIndex("ShaftId");
 
                     b.ToTable("Cues");
-                });
-
-            modelBuilder.Entity("CueMarket.API.Models.Domain.Ferrule", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Brand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Capped")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("MaterialId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaterialId");
-
-                    b.ToTable("Ferrules");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Material", b =>
@@ -98,9 +74,6 @@ namespace CueMarket.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("FerruleId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("MaterialId")
                         .HasColumnType("uniqueidentifier");
 
@@ -108,8 +81,6 @@ namespace CueMarket.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FerruleId");
 
                     b.HasIndex("MaterialId");
 
@@ -157,25 +128,8 @@ namespace CueMarket.API.Migrations
                     b.Navigation("Shaft");
                 });
 
-            modelBuilder.Entity("CueMarket.API.Models.Domain.Ferrule", b =>
-                {
-                    b.HasOne("CueMarket.API.Models.Domain.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Material");
-                });
-
             modelBuilder.Entity("CueMarket.API.Models.Domain.Shaft", b =>
                 {
-                    b.HasOne("CueMarket.API.Models.Domain.Ferrule", "Ferrule")
-                        .WithMany()
-                        .HasForeignKey("FerruleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CueMarket.API.Models.Domain.Material", "Material")
                         .WithMany()
                         .HasForeignKey("MaterialId")
@@ -187,8 +141,6 @@ namespace CueMarket.API.Migrations
                         .HasForeignKey("TipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Ferrule");
 
                     b.Navigation("Material");
 
