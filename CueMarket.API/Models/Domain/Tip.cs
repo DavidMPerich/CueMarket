@@ -1,6 +1,6 @@
 ﻿namespace CueMarket.API.Models.Domain
 {
-    public class Shaft
+    public class Tip
     {
         public Guid Id { get; set; }
         public string Brand { get; set; }

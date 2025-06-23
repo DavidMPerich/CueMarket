@@ -12,5 +12,7 @@ namespace CueMarket.API.Data
 
         public DbSet<Cue> Cues { get; set; }
         public DbSet<Shaft> Shafts { get; set; }
+        public DbSet<Tip> Tips { get; set; }
+        public DbSet<Material> Materials { get; set; }
     }
 }
