@@ -1,11 +1,11 @@
 ﻿namespace CueMarket.API.Models.Domain
 {
-    public class Butt
+    public class Collar
     {
         public Guid Id { get; set; }
-        public Guid CollarId { get; set; }
+        public Guid MaterialId { get; set; }
 
         //Navigation Properties
-        public Collar Collar { get; set; }
+        public Material Material { get; set; }
     }
 }
