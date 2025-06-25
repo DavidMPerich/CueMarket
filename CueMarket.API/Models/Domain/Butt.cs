@@ -3,9 +3,7 @@
     public class Butt
     {
         public Guid Id { get; set; }
-        public Guid CollarId { get; set; }
 
         //Navigation Properties
-        public Collar Collar { get; set; }
     }
 }

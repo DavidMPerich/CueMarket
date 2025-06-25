@@ -4,6 +4,7 @@ using CueMarket.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CueMarket.API.Migrations
 {
     [DbContext(typeof(CueMarketDbContext))]
-    partial class CueMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250625181535_RemoveCollarModel")]
+    partial class RemoveCollarModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Butts", (string)null);
+                    b.ToTable("Butts");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Cue", b =>
@@ -60,7 +63,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasIndex("ShaftId");
 
-                    b.ToTable("Cues", (string)null);
+                    b.ToTable("Cues");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Ferrule", b =>
@@ -87,7 +90,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasIndex("MaterialId");
 
-                    b.ToTable("Ferrules", (string)null);
+                    b.ToTable("Ferrules");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Joint", b =>
@@ -102,7 +105,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Joints", (string)null);
+                    b.ToTable("Joints");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Material", b =>
@@ -121,7 +124,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Materials", (string)null);
+                    b.ToTable("Materials");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Shaft", b =>
@@ -156,7 +159,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasIndex("TipId");
 
-                    b.ToTable("Shafts", (string)null);
+                    b.ToTable("Shafts");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Tip", b =>
@@ -184,7 +187,7 @@ namespace CueMarket.API.Migrations
 
                     b.HasIndex("MaterialId");
 
-                    b.ToTable("Tips", (string)null);
+                    b.ToTable("Tips");
                 });
 
             modelBuilder.Entity("CueMarket.API.Models.Domain.Cue", b =>
