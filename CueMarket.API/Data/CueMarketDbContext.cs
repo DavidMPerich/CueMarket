@@ -16,5 +16,6 @@ namespace CueMarket.API.Data
         public DbSet<Material> Materials { get; set; }
         public DbSet<Ferrule> Ferrules { get; set; }
         public DbSet<Butt> Butts { get; set; }
+        public DbSet<Ring> Rings { get; set; }
     }
 }
