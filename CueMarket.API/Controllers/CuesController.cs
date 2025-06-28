@@ -1,8 +1,11 @@
-﻿using CueMarket.API.Data;
+﻿using AutoMapper;
+using CueMarket.API.Data;
 using CueMarket.API.Models.Domain;
 using CueMarket.API.Models.DTO;
+using CueMarket.API.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CueMarket.API.Controllers
 {
@@ -11,133 +14,80 @@ namespace CueMarket.API.Controllers
     public class CuesController : ControllerBase
     {
         private readonly CueMarketDbContext dbContext;
+        private readonly ICueRepository cueRepository;
+        private readonly IMapper mapper;
 
-        public CuesController(CueMarketDbContext dbContext)
+        public CuesController(CueMarketDbContext dbContext, ICueRepository cueRepository, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.cueRepository = cueRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             //Get Domain Models From Database
-            var cues = dbContext.Cues.ToList();
-
-            //Map Domain Models to DTOs
-            var cuesDto = new List<CueDto>();
-            foreach (var cue in cues)
-            {
-                cuesDto.Add(new CueDto
-                {
-                    Id = cue.Id,
-                    Maker = cue.Maker,
-                    ButtId = cue.ButtId,
-                    JointType = cue.JointType
-                });
-            }
+            var cues = await cueRepository.GetAllAsync();
 
             //Return DTOs
-            return Ok(cuesDto);
+            return Ok(mapper.Map<List<CueDto>>(cues));
         }
 
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var cue = dbContext.Cues.FirstOrDefault(x => x.Id == id);
+            var cue = await cueRepository.GetByIdAsync(id);
             
             if (cue == null)
             {
                 return NotFound();
             }
 
-            var cueDto = new CueDto
-            {
-                Id = cue.Id,
-                Maker = cue.Maker,
-                ButtId = cue.ButtId,
-                JointType = cue.JointType
-            };
-
-            return Ok(cueDto);
+            return Ok(mapper.Map<CueDto>(cue));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] AddCueRequestDto addCueRequestDto)
+        public async Task<IActionResult> Create([FromBody] AddCueRequestDto addCueRequestDto)
         {
-            var cue = new Cue
-            {
-                Id = Guid.NewGuid(),
-                Maker = addCueRequestDto.Maker,
-                ButtId = addCueRequestDto.ButtId,
-                JointType = addCueRequestDto.JointType
-            };
+            var cue = mapper.Map<Cue>(addCueRequestDto);
 
-            dbContext.Cues.Add(cue);
-            dbContext.SaveChanges();
+            cue = await cueRepository.CreateAsync(cue);
 
-            var cueDto = new CueDto
-            {
-                Id = cue.Id,
-                Maker = cue.Maker,
-                ButtId = cue.ButtId,
-                JointType = cue.JointType
-            };
+            var cueDto = mapper.Map<CueDto>(cue);
 
             return CreatedAtAction(nameof(GetById), new { id = cueDto.Id }, cueDto);
         }
 
         [HttpPut]
         [Route("{id:Guid}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateCueRequestDto updateCueRequestDto)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCueRequestDto updateCueRequestDto)
         {
-            var cue = dbContext.Cues.FirstOrDefault(x => x.Id == id);
+            var cue = mapper.Map<Cue>(updateCueRequestDto);
+
+            cue = await cueRepository.UpdateAsync(id, cue);
             
             if (cue == null)
             {
                 return NotFound();
             }
 
-            cue.Maker = updateCueRequestDto.Maker;
-            cue.ButtId = updateCueRequestDto.ButtId;
-            cue.JointType = updateCueRequestDto.JointType;
-
-            dbContext.SaveChanges();
-
-            var cueDto = new CueDto
-            {
-                Id = cue.Id,
-                Maker = cue.Maker,
-                ButtId = cue.ButtId,
-                JointType = cue.JointType
-            };
-
-            return Ok(cueDto);
+            return Ok(mapper.Map<CueDto>(cue));
         }
 
         [HttpDelete]
         [Route("{id:Guid}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var cue = dbContext.Cues.FirstOrDefault(x => x.Id == id);
+            var cue = await cueRepository.DeleteAsync(id);
 
             if (cue == null)
             {
                 return NotFound();
             }
 
-            dbContext.Cues.Remove(cue);
-            dbContext.SaveChanges();
-
-            var cueDto = new CueDto
-            {
-                Id = cue.Id,
-                Maker = cue.Maker,
-                ButtId = cue.ButtId,
-                JointType = cue.JointType
-            };
-
-            return Ok(cueDto);
+            return Ok(mapper.Map<CueDto>(cue));
         }
     }
 }

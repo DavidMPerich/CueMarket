@@ -1,4 +1,6 @@
 using CueMarket.API.Data;
+using CueMarket.API.Mappings;
+using CueMarket.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CueMarketDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("CueMarketConnectionString")));
+
+builder.Services.AddScoped<ICueRepository, SQLCueRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
 

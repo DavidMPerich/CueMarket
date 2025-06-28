@@ -1,0 +1,16 @@
+﻿using AutoMapper;
+using CueMarket.API.Models.Domain;
+using CueMarket.API.Models.DTO;
+
+namespace CueMarket.API.Mappings
+{
+    public class AutoMapperProfiles : Profile
+    {
+        public AutoMapperProfiles()
+        {
+            CreateMap<Cue, CueDto>().ReverseMap();
+            CreateMap<AddCueRequestDto, Cue>().ReverseMap();
+            CreateMap<UpdateCueRequestDto, Cue>().ReverseMap();
+        }
+    }
+}
