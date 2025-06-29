@@ -1,6 +1,6 @@
-﻿namespace CueMarket.API.Models.Domain
+﻿namespace CueMarket.API.Models.DTO
 {
-    public class WeightBolt
+    public class WeightBoltDto
     {
         public Guid Id { get; set; }
         public string? Maker { get; set; }

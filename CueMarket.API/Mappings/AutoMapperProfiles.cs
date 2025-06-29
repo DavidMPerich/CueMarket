@@ -11,6 +11,11 @@ namespace CueMarket.API.Mappings
             CreateMap<Cue, CueDto>().ReverseMap();
             CreateMap<AddCueRequestDto, Cue>().ReverseMap();
             CreateMap<UpdateCueRequestDto, Cue>().ReverseMap();
+
+            CreateMap<WeightBolt, WeightBoltDto>().ReverseMap();
+            CreateMap<AddWeightBoltRequestDto, WeightBolt>().ReverseMap();
+            CreateMap<UpdateWeightBoltRequestDto, WeightBolt>().ReverseMap();
+
             CreateMap<Butt, ButtDto>().ReverseMap();
         }
     }
