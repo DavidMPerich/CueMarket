@@ -6,7 +6,8 @@ namespace CueMarket.API.Models.DTO
     {
         public Guid Id { get; set; }
         public string Maker { get; set; }
-        public Guid? ButtId { get; set; }
         public string JointType { get; set; }
+
+        public ButtDto Butt { get; set; }
     }
 }

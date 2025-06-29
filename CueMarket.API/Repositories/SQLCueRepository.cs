@@ -37,7 +37,7 @@ namespace CueMarket.API.Repositories
 
         public async Task<List<Cue>> GetAllAsync()
         {
-            return await dbContext.Cues.ToListAsync();
+            return await dbContext.Cues.Include("Butt").ToListAsync();
         }
 
         public async Task<Cue?> GetByIdAsync(Guid id)

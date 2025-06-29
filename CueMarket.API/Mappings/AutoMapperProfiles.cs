@@ -11,6 +11,7 @@ namespace CueMarket.API.Mappings
             CreateMap<Cue, CueDto>().ReverseMap();
             CreateMap<AddCueRequestDto, Cue>().ReverseMap();
             CreateMap<UpdateCueRequestDto, Cue>().ReverseMap();
+            CreateMap<Butt, ButtDto>().ReverseMap();
         }
     }
 }
