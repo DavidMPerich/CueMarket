@@ -17,6 +17,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("CueMarketConnect
 
 builder.Services.AddScoped<ICueRepository, SQLCueRepository>();
 builder.Services.AddScoped<IWeightBoltRepository, SQLWeightBoltRepository>();
+builder.Services.AddScoped<IBumperRepository, SQLBumperRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
