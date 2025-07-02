@@ -32,6 +32,10 @@ namespace CueMarket.API.Mappings
             CreateMap<AddForearmRequestDto, Forearm>().ReverseMap();
             CreateMap<UpdateForearmRequestDto, Forearm>().ReverseMap();
 
+            CreateMap<Ring, RingDto>().ReverseMap();
+            CreateMap<AddRingRequestDto, Ring>().ReverseMap();
+            CreateMap<UpdateRingRequestDto, Ring>().ReverseMap();
+
             CreateMap<Butt, ButtDto>().ReverseMap();
 
             CreateMap<Material, MaterialDto>().ReverseMap();
