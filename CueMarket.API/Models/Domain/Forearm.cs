@@ -3,10 +3,10 @@
     public class Forearm
     {
         public Guid Id { get; set; }
-        public Guid MaterialId { get; set; }
-        public string Design { get; set; }
+        public Guid? MaterialId { get; set; }
+        public string? Design { get; set; }
 
         //Navigation Properties
-        public Material Material { get; set; }
+        public Material? Material { get; set; }
     }
 }
