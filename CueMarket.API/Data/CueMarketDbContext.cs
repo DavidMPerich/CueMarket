@@ -80,7 +80,20 @@ namespace CueMarket.API.Data
                 new Material { Id = Guid.Parse("77313c18-88ff-4a29-ba07-26d93d38179b"), Type = "Wrap", Name = "Lizard Skin" },
                 new Material { Id = Guid.Parse("eb056bbc-ff3f-479c-8595-eae1233a59e4"), Type = "Wrap", Name = "Rubber" },
                 new Material { Id = Guid.Parse("11cfbe35-cf6d-4d10-b14c-759c58b325db"), Type = "Wrap", Name = "No Wrap (Sanded Wood)" },
-                new Material { Id = Guid.Parse("dff167ba-ae2b-450f-adc9-860581185607"), Type = "Wrap", Name = "Silicone Grip" }
+                new Material { Id = Guid.Parse("dff167ba-ae2b-450f-adc9-860581185607"), Type = "Wrap", Name = "Silicone Grip" },
+
+                // Collar Materials
+                new Material { Id = Guid.Parse("894c52fb-f5a0-41f8-8443-984a71ca1c0a"), Type = "Collar", Name = "Phenolic Resin" },
+                new Material { Id = Guid.Parse("74af0241-a897-4b36-977d-47c7a98fd64f"), Type = "Collar", Name = "Ivory" },
+                new Material { Id = Guid.Parse("d1e339a1-246f-4099-93b1-4b9d7abb1c6c"), Type = "Collar", Name = "Micarta" },
+                new Material { Id = Guid.Parse("61896bf6-3504-4901-9586-e22ad63efcd6"), Type = "Collar", Name = "Aegis" },
+                new Material { Id = Guid.Parse("0df02a5b-25fc-4853-85e9-bc5ee1dffff6"), Type = "Collar", Name = "Juma" },
+                new Material { Id = Guid.Parse("60369fa0-2a8f-4f1d-aeea-96ced38a9053"), Type = "Collar", Name = "G10" },
+                new Material { Id = Guid.Parse("9e7cfed7-3e01-470a-9869-e0a7f2ec5e62"), Type = "Collar", Name = "ABS Plastic" },
+                new Material { Id = Guid.Parse("d367b855-4137-4e82-ae40-57efe4b4e21e"), Type = "Collar", Name = "Ebony" },
+                new Material { Id = Guid.Parse("12be0d93-1034-489c-9a68-79e7911c9d99"), Type = "Collar", Name = "Cocobolo" },
+                new Material { Id = Guid.Parse("810ee629-2325-4778-9781-b9c25f73a41d"), Type = "Collar", Name = "Stainless Steel" },
+                new Material { Id = Guid.Parse("b958c135-27eb-4b86-8115-cb06eebf0f55"), Type = "Collar", Name = "Brass" }
             };
 
             modelBuilder.Entity<Material>().HasData(materials);
