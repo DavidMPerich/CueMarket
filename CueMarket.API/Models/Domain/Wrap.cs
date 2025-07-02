@@ -3,10 +3,10 @@
     public class Wrap
     {
         public Guid Id { get; set; }
-        public Guid MaterialId { get; set; }
-        public string Color { get; set; }
+        public Guid? MaterialId { get; set; }
+        public string? Color { get; set; }
 
         //Navigation Properties
-        public Material Material { get; set; }
+        public Material? Material { get; set; }
     }
 }

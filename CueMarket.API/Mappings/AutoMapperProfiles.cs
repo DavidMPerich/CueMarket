@@ -24,7 +24,13 @@ namespace CueMarket.API.Mappings
             CreateMap<AddButtSleeveRequestDto, ButtSleeve>().ReverseMap();
             CreateMap<UpdateButtSleeveRequestDto, ButtSleeve>().ReverseMap();
 
+            CreateMap<Wrap, WrapDto>().ReverseMap();
+            CreateMap<AddWrapRequestDto, Wrap>().ReverseMap();
+            CreateMap<UpdateWrapRequestDto, Wrap>().ReverseMap();
+
             CreateMap<Butt, ButtDto>().ReverseMap();
+
+            CreateMap<Material, MaterialDto>().ReverseMap();
         }
     }
 }
