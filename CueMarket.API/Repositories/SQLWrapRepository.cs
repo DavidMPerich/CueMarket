@@ -17,6 +17,7 @@ namespace CueMarket.API.Repositories
         {
             await dbContext.Wraps.AddAsync(wrap);
             await dbContext.SaveChangesAsync();
+            await dbContext.Entry(wrap).Reference(x => x.Material).LoadAsync();
             return wrap;
         }
 
@@ -31,6 +32,7 @@ namespace CueMarket.API.Repositories
 
             dbContext.Wraps.Remove(existingWrap);
             await dbContext.SaveChangesAsync();
+            await dbContext.Entry(existingWrap).Reference(x => x.Material).LoadAsync();
 
             return existingWrap;
         }
@@ -42,7 +44,7 @@ namespace CueMarket.API.Repositories
 
         public async Task<Wrap?> GetByIdAsync(Guid id)
         {
-            return await dbContext.Wraps.FirstOrDefaultAsync(x => x.Id == id);
+            return await dbContext.Wraps.Include("Material").FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Wrap?> UpdateAsync(Guid id, Wrap wrap)
@@ -58,7 +60,7 @@ namespace CueMarket.API.Repositories
             existingWrap.Color = wrap.Color;
 
             await dbContext.SaveChangesAsync();
-
+            await dbContext.Entry(existingWrap).Reference(x => x.Material).LoadAsync();
             return existingWrap;
         }
     }
