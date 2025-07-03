@@ -22,6 +22,7 @@ namespace CueMarket.API.Data
         public DbSet<ButtSleeve> ButtSleeves { get; set; }
         public DbSet<Bumper> Bumpers { get; set; }
         public DbSet<WeightBolt> WeightBolts { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -23,6 +23,7 @@ builder.Services.AddScoped<IWrapRepository, SQLWrapRepository>();
 builder.Services.AddScoped<IForearmRepository, SQLForearmRepository>();
 builder.Services.AddScoped<IRingRepository, SQLRingRepository>();
 builder.Services.AddScoped<IButtRepository, SQLButtRepository>();
+builder.Services.AddScoped<IUserRepository, SQLUserRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
