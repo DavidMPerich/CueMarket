@@ -37,6 +37,8 @@ namespace CueMarket.API.Mappings
             CreateMap<UpdateRingRequestDto, Ring>().ReverseMap();
 
             CreateMap<Butt, ButtDto>().ReverseMap();
+            CreateMap<AddButtRequestDto, Butt>().ReverseMap();
+            CreateMap<UpdateButtRequestDto, Butt>().ReverseMap();
 
             CreateMap<Material, MaterialDto>().ReverseMap();
         }
