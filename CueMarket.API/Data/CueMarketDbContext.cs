@@ -94,7 +94,12 @@ namespace CueMarket.API.Data
                 new Material { Id = Guid.Parse("d367b855-4137-4e82-ae40-57efe4b4e21e"), Type = "Collar", Name = "Ebony" },
                 new Material { Id = Guid.Parse("12be0d93-1034-489c-9a68-79e7911c9d99"), Type = "Collar", Name = "Cocobolo" },
                 new Material { Id = Guid.Parse("810ee629-2325-4778-9781-b9c25f73a41d"), Type = "Collar", Name = "Stainless Steel" },
-                new Material { Id = Guid.Parse("b958c135-27eb-4b86-8115-cb06eebf0f55"), Type = "Collar", Name = "Brass" }
+                new Material { Id = Guid.Parse("b958c135-27eb-4b86-8115-cb06eebf0f55"), Type = "Collar", Name = "Brass" },
+
+                // ButtCap Materials
+                new Material { Id = Guid.Parse("8a37c59e-c72b-4eba-b54c-f1a768c4ec1a"), Type = "ButtCap", Name = "Ivory" },
+                new Material { Id = Guid.Parse("49ecccb1-096a-4796-b791-a9defd95595c"), Type = "ButtCap", Name = "ABS Plastic" },
+                new Material { Id = Guid.Parse("96257cdf-5810-45d9-b0cb-aa8d1570063f"), Type = "ButtCap", Name = "Stainless Steel" }
             };
 
             modelBuilder.Entity<Material>().HasData(materials);

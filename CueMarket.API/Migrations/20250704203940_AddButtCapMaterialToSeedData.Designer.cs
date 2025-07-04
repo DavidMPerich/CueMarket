@@ -4,6 +4,7 @@ using CueMarket.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CueMarket.API.Migrations
 {
     [DbContext(typeof(CueMarketDbContext))]
-    partial class CueMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250704203940_AddButtCapMaterialToSeedData")]
+    partial class AddButtCapMaterialToSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -521,19 +524,19 @@ namespace CueMarket.API.Migrations
                         {
                             Id = new Guid("8a37c59e-c72b-4eba-b54c-f1a768c4ec1a"),
                             Name = "Ivory",
-                            Type = "ButtCap"
+                            Type = "Collar"
                         },
                         new
                         {
                             Id = new Guid("49ecccb1-096a-4796-b791-a9defd95595c"),
                             Name = "ABS Plastic",
-                            Type = "ButtCap"
+                            Type = "Collar"
                         },
                         new
                         {
                             Id = new Guid("96257cdf-5810-45d9-b0cb-aa8d1570063f"),
                             Name = "Stainless Steel",
-                            Type = "ButtCap"
+                            Type = "Collar"
                         });
                 });
 
