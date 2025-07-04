@@ -37,13 +37,52 @@ namespace CueMarket.API.Repositories
 
         public async Task<List<Cue>> GetAllAsync()
         {
-            return await dbContext.Cues.Include("Butt").ToListAsync();
+            return await dbContext.Cues
+                .Include("User")
+                .Include("Butt")
+                .Include("Butt.CollarMaterial")
+                .Include("Butt.RingB")
+                .Include("Butt.RingB.Material")
+                .Include("Butt.Forearm")
+                .Include("Butt.Forearm.Material")
+                .Include("Butt.RingC")
+                .Include("Butt.RingC.Material")
+                .Include("Butt.Wrap")
+                .Include("Butt.Wrap.Material")
+                .Include("Butt.RingD")
+                .Include("Butt.RingD.Material")
+                .Include("Butt.ButtSleeve")
+                .Include("Butt.RingE")
+                .Include("Butt.RingE.Material")
+                .Include("Butt.ButtCapMaterial")
+                .Include("Butt.Bumper")
+                .Include("Butt.WeightBolt")
+                .ToListAsync();
         }
 
         public async Task<Cue?> GetByIdAsync(Guid id)
         {
-            return await dbContext.Cues.FirstOrDefaultAsync(x => x.Id == id);
-
+            return await dbContext.Cues
+                .Include("User")
+                .Include("Butt")
+                .Include("Butt.CollarMaterial")
+                .Include("Butt.RingB")
+                .Include("Butt.RingB.Material")
+                .Include("Butt.Forearm")
+                .Include("Butt.Forearm.Material")
+                .Include("Butt.RingC")
+                .Include("Butt.RingC.Material")
+                .Include("Butt.Wrap")
+                .Include("Butt.Wrap.Material")
+                .Include("Butt.RingD")
+                .Include("Butt.RingD.Material")
+                .Include("Butt.ButtSleeve")
+                .Include("Butt.RingE")
+                .Include("Butt.RingE.Material")
+                .Include("Butt.ButtCapMaterial")
+                .Include("Butt.Bumper")
+                .Include("Butt.WeightBolt")
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Cue?> UpdateAsync(Guid id, Cue cue)
