@@ -48,6 +48,10 @@ namespace CueMarket.API.Mappings
             CreateMap<AddFerruleRequestDto, Ferrule>().ReverseMap();
             CreateMap<UpdateFerruleRequestDto, Ferrule>().ReverseMap();
 
+            CreateMap<Tip, TipDto>().ReverseMap();
+            CreateMap<AddTipRequestDto, Tip>().ReverseMap();
+            CreateMap<UpdateTipRequestDto, Tip>().ReverseMap();
+
             CreateMap<Material, MaterialDto>().ReverseMap();
         }
     }

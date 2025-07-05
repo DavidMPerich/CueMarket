@@ -36,14 +36,14 @@ namespace CueMarket.API.Repositories
             return existingFerrule;
         }
 
-        public Task<List<Ferrule>> GetAllAsync()
+        public async Task<List<Ferrule>> GetAllAsync()
         {
-            return dbContext.Ferrules.Include("Material").ToListAsync();
+            return await dbContext.Ferrules.Include("Material").ToListAsync();
         }
 
-        public Task<Ferrule?> GetByIdAsync(Guid id)
+        public async Task<Ferrule?> GetByIdAsync(Guid id)
         {
-            return dbContext.Ferrules.Include("Material").FirstOrDefaultAsync(x => x.Id == id);
+            return await dbContext.Ferrules.Include("Material").FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Ferrule?> UpdateAsync(Guid id, Ferrule ferrule)
