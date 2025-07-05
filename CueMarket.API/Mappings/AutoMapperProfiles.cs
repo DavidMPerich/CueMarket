@@ -52,6 +52,10 @@ namespace CueMarket.API.Mappings
             CreateMap<AddTipRequestDto, Tip>().ReverseMap();
             CreateMap<UpdateTipRequestDto, Tip>().ReverseMap();
 
+            CreateMap<Shaft, ShaftDto>().ReverseMap();
+            CreateMap<AddShaftRequestDto, Shaft>().ReverseMap();
+            CreateMap<UpdateShaftRequestDto, Shaft>().ReverseMap();
+
             CreateMap<Material, MaterialDto>().ReverseMap();
         }
     }
