@@ -44,6 +44,10 @@ namespace CueMarket.API.Mappings
             CreateMap<AddUserRequestDto, User>().ReverseMap();
             CreateMap<UpdateUserRequestDto, User>().ReverseMap();
 
+            CreateMap<Ferrule, FerruleDto>().ReverseMap();
+            CreateMap<AddFerruleRequestDto, Ferrule>().ReverseMap();
+            CreateMap<UpdateFerruleRequestDto, Ferrule>().ReverseMap();
+
             CreateMap<Material, MaterialDto>().ReverseMap();
         }
     }

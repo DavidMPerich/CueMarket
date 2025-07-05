@@ -24,6 +24,7 @@ builder.Services.AddScoped<IForearmRepository, SQLForearmRepository>();
 builder.Services.AddScoped<IRingRepository, SQLRingRepository>();
 builder.Services.AddScoped<IButtRepository, SQLButtRepository>();
 builder.Services.AddScoped<IUserRepository, SQLUserRepository>();
+builder.Services.AddScoped<IFerruleRepository, SQLFerruleRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
