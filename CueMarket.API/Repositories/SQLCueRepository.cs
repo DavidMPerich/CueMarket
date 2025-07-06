@@ -35,9 +35,9 @@ namespace CueMarket.API.Repositories
             return existingCue;
         }
 
-        public async Task<List<Cue>> GetAllAsync()
+        public async Task<List<Cue>> GetAllAsync(string? filterOn = null, string? filterQuery = null)
         {
-            return await dbContext.Cues
+            var cues = dbContext.Cues
                 .Include("User")
                 .Include("Butt")
                 .Include("Butt.CollarMaterial")
@@ -57,7 +57,17 @@ namespace CueMarket.API.Repositories
                 .Include("Butt.ButtCapMaterial")
                 .Include("Butt.Bumper")
                 .Include("Butt.WeightBolt")
-                .ToListAsync();
+                .AsQueryable();
+
+            //Filtering
+            if (!string.IsNullOrWhiteSpace(filterOn) && !string.IsNullOrWhiteSpace(filterQuery))
+            {
+
+
+                //cues = cues.Where(x => )
+            }
+
+            return await cues.ToListAsync();
         }
 
         public async Task<Cue?> GetByIdAsync(Guid id)

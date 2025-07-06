@@ -5,7 +5,7 @@ namespace CueMarket.API.Repositories
 {
     public interface ICueRepository
     {
-        Task<List<Cue>> GetAllAsync();
+        Task<List<Cue>> GetAllAsync(string? filterOn = null, string? filterQuery = null);
         Task<Cue?> GetByIdAsync(Guid id);
         Task<Cue> CreateAsync(Cue cue);
         Task<Cue?> UpdateAsync(Guid id, Cue cue);
