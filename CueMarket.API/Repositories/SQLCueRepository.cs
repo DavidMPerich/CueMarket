@@ -2,6 +2,7 @@
 using CueMarket.API.Data;
 using CueMarket.API.Models.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CueMarket.API.Repositories
 {
@@ -36,7 +37,7 @@ namespace CueMarket.API.Repositories
             return existingCue;
         }
 
-        public async Task<List<Cue>> GetAllAsync(string? filterOn = null, string? filterQuery = null)
+        public async Task<List<Cue>> GetAllAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true)
         {
             var cues = dbContext.Cues
                 .Include("User")
@@ -66,6 +67,15 @@ namespace CueMarket.API.Repositories
                 if (filterOn.Equals("Maker", StringComparison.OrdinalIgnoreCase))
                 {
                     cues = cues.Where(x => x.Maker.Contains(filterQuery));
+                }
+            }
+
+            //Sorting
+            if (!string.IsNullOrWhiteSpace(sortBy))
+            {
+                if (sortBy.Equals("Maker", StringComparison.OrdinalIgnoreCase))
+                {
+                    cues = isAscending ? cues.OrderBy(x => x.Maker) : cues.OrderByDescending(x => x.Maker);
                 }
             }
 
