@@ -49,11 +49,6 @@ namespace CueMarket.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddUserRequestDto addUserRequestDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var user = mapper.Map<User>(addUserRequestDto);
 
             user = await userRepository.CreateAsync(user);
