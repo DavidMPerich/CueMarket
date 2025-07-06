@@ -28,7 +28,7 @@ namespace CueMarket.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery)
         {
             //Get Domain Models From Database
-            var cues = await cueRepository.GetAllAsync();
+            var cues = await cueRepository.GetAllAsync(filterOn, filterQuery);
 
             //Return DTOs
             return Ok(mapper.Map<List<CueDto>>(cues));

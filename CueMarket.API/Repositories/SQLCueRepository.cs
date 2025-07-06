@@ -1,4 +1,5 @@
-﻿using CueMarket.API.Data;
+﻿using CueMarket.API.Controllers;
+using CueMarket.API.Data;
 using CueMarket.API.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -62,9 +63,10 @@ namespace CueMarket.API.Repositories
             //Filtering
             if (!string.IsNullOrWhiteSpace(filterOn) && !string.IsNullOrWhiteSpace(filterQuery))
             {
-
-
-                //cues = cues.Where(x => )
+                if (filterOn.Equals("Maker", StringComparison.OrdinalIgnoreCase))
+                {
+                    cues = cues.Where(x => x.Maker.Contains(filterQuery));
+                }
             }
 
             return await cues.ToListAsync();
